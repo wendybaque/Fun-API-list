@@ -7,7 +7,6 @@ function App() {
     <div className="App">
       <Jumbotron />
       <Footer />
-      {/* <i className="SideBarIcon fa-brands fa-facebook-square"></i> */}
     </div>
   );
 }
