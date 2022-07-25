@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function useAxios(query) {
     const [response, setResponse] = useState({});
@@ -9,7 +9,7 @@ function useAxios(query) {
     const fetchData = async (params) => {
         try {
             setLoading(true);
-            const res = axios.get(`https://api.publicapis.org/${query}`, params);
+            const res = await axios.get(`https://api.publicapis.org/${query}`, params);
             setResponse(res.data);
         } catch (err) {
             setError(err);
