@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import useAxios from '../hooks/useAxios';
 
-function ButtonFilter() {
+function ButtonFilter({fetchData : fetchAPI}) {
     const {fetchData, response: {categories}, loading} = useAxios('categories');
     useEffect(() => {
         fetchData();
@@ -17,10 +17,18 @@ function ButtonFilter() {
         );
     }
 
+    const clickFilterButton = e => {
+        fetchAPI({params:{category:e.target.value}});
+    }
+
   return (
     <div className='text-center my-5'>
         {categories && categories.map(button => (
-            <button className='m-1 text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'>{button}</button>
+            <button onClick={clickFilterButton} value={button} className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                {button}
+            </span>
+          </button>
          ))}
     </div>
   )
