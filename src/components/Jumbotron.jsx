@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function Jumbotron({fetchData}) {
   const [value, setValue] = useState("");
+
   const handleEnter = e => {
     if(e.key === 'Enter') {
       fetchData({params:{title:value}});
@@ -30,7 +31,7 @@ function Jumbotron({fetchData}) {
         <button 
         type='button' 
         onClick={handleButtonSearch}
-        className='bg-indigo-500 border-l px-4 py-2 text-white rounded-r-lg drop-shadow-lg flex items-center justify-center'> <i class="fa-solid fa-magnifying-glass"></i></button>
+        className='bg-indigo-500 border-l px-4 py-2 text-white rounded-r-lg drop-shadow-lg flex items-center justify-center'> <i className="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
   )
